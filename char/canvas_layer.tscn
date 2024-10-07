@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://csxsddvmup6st"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cudsy"]
+bg_color = Color(0, 0.619608, 0.12549, 0.392157)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 8.0
+offset_top = 592.0
+offset_right = 264.0
+offset_bottom = 619.0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_cudsy")
+rounded = true
