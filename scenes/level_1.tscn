@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfajc1868pin2"]
+
+[ext_resource type="PackedScene" uid="uid://cqeqnhtbhjkjo" path="res://scenes/parallax_background.tscn" id="1_cqsri"]
+
+[node name="Level_1" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 64.0
+offset_right = 736.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 50
+text = "Zaeboomba"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_cqsri")]
