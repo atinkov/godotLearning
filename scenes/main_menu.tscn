@@ -1,28 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc4k0nce77ujs"]
+[gd_scene load_steps=6 format=3 uid="uid://cc4k0nce77ujs"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_u11si"]
-[ext_resource type="PackedScene" uid="uid://cqeqnhtbhjkjo" path="res://scenes/parallax_background.tscn" id="2_3aqf7"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="2_pt6nt"]
+[ext_resource type="Texture2D" uid="uid://dkwv8wfm8s1rs" path="res://assets/oak_woods_v1.0/background/background_layer_1.png" id="3_7komg"]
+[ext_resource type="Texture2D" uid="uid://dd6obwyuwx2jm" path="res://assets/oak_woods_v1.0/background/background_layer_2.png" id="4_aafsl"]
+[ext_resource type="Texture2D" uid="uid://bvavqa84jahfq" path="res://assets/oak_woods_v1.0/background/background_layer_3.png" id="5_oxhpk"]
 
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_u11si")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 64.0
-offset_top = 216.0
+offset_top = 400.0
 offset_right = 441.0
-offset_bottom = 293.0
+offset_bottom = 477.0
 theme_override_font_sizes/font_size = 50
 text = "Play game ebat"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 64.0
-offset_top = 304.0
+offset_top = 488.0
 offset_right = 441.0
-offset_bottom = 381.0
+offset_bottom = 565.0
 theme_override_font_sizes/font_size = 50
 text = "Go work"
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("2_3aqf7")]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_pt6nt")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1936, 0)
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(975.748, 543)
+scale = Vector2(6.09843, 5.96667)
+texture = ExtResource("3_7komg")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1936, 0)
+
+[node name="BackgroundLayer2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(976, 536)
+scale = Vector2(6.1, 6)
+texture = ExtResource("4_aafsl")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1936, 0)
+
+[node name="BackgroundLayer3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(976, 540)
+scale = Vector2(6.1, 6)
+texture = ExtResource("5_oxhpk")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ijw64aggim7"]
+
+[sub_resource type="GDScript" id="GDScript_0oa15"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = \"HP: \" + str($player/player.HEALTH)
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HP_label" type="Label" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 40
+script = SubResource("GDScript_0oa15")

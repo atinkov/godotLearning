@@ -2,14 +2,15 @@ extends CharacterBody2D
 
 # Переменные для движения
 var SPEED = 100.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -400.0
 const BOOSTED_SPEED = 180
 
 # Переменные для ускорения
 var IS_BOOST = false # флаг ускорения
 var BOOST_DURATION = 5.0 # длительность ускорения в секундах
 var BOOST_TIMER = 0.0 # таймер для отслеживания времени ускорения
-var CAN_BOOST = true # флаг возможности ускорения
+
+var HEALTH = 100;
 
 @onready var anim = $AnimatedSprite2D
 
@@ -50,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		SPEED = BOOSTED_SPEED # Увеличенная скорость
 		anim.speed_scale = 2.0
 		BOOST_TIMER = BOOST_DURATION # Запуск таймера ускорения
-		CAN_BOOST = false # Запрещаем ускорение до окончания восстановления
+
 	else:
 		# Если Shift не зажат, используем обычную скорость
 		IS_BOOST = false
@@ -64,6 +65,10 @@ func _physics_process(delta: float) -> void:
 		if BOOST_TIMER <= 0:
 			IS_BOOST = false # Ускорение закончилось
 			SPEED = 100 # Возвращаем обычную скорость
-
+	
+	if HEALTH <= 0:
+		queue_free()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	
 	# Движение персонажа
 	move_and_slide()
